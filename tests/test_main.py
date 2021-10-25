@@ -44,7 +44,7 @@ def setup_env(tmp_path: Path) -> TmpFileSetup:
 
 
 @pytest.mark.parametrize(
-    "files, input",
+    "files, input, expected",
     [
         (
             [
@@ -52,6 +52,7 @@ def setup_env(tmp_path: Path) -> TmpFileSetup:
                 (Path("test-2/hello.txt"), "hi from test-2"),
             ],
             ["test-1/hello.txt", "test-2/hello.txt"],
+            "| test-1          | test-2          |          5 |",
         ),
     ],
 )
@@ -59,8 +60,10 @@ def test_main(
     setup_env: Callable[..., TmpFileSetup],
     files: List[Tuple[Path, str]],
     input: List[str],
+    expected: str,
 ):
     """Check that main.mesi_cli does not raise with valid input."""
     with setup_env(files):
         result = runner.invoke(main.mesi_cli, input)
+        assert expected in result.output
         assert result.exit_code == 0
