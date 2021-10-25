@@ -1,0 +1,1 @@
+"""Test the compare module."""
