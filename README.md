@@ -7,6 +7,7 @@ Measure Similarity
 [![Lint and Test](https://github.com/GatorEducator/mesi/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/GatorEducator/mesi/actions/workflows/main.yml)
 [![codecov](https://codecov.io/gh/GatorEducator/mesi/branch/main/graph/badge.svg?token=RdzwvXDrxp)](https://codecov.io/gh/GatorEducator/mesi)
 [![PyPI](https://img.shields.io/pypi/v/mesi)](https://pypi.org/project/mesi)
+![PyPI - Downloads](https://img.shields.io/pypi/dm/mesi)
 [![License](https://img.shields.io/github/license/GatorEducator/mesi.svg)](https://github.com/GatorEducator/mesi/blob/master/LICENSE)
 
 Mesi is a tool to measure the similarity in a many-to-many fashion of long-form
