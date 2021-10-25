@@ -1,0 +1,47 @@
+[tool.poetry]
+name = "mesi"
+version = "0"
+description = "Measure similarity in a many-to-many fashion"
+authors = ["Saejin Mahlau-Heinert <saejinmh@gmail.com>"]
+readme = "README.md"
+
+
+[tool.poetry.scripts]
+mesi = "mesi.main:mesi_cli"
+
+
+[tool.poetry.dependencies]
+python = ">=3.6.2, <4.0"
+polyleven = "^0.7"
+tabulate = "^0.8.9"
+textdistance = {extras = ["extras"], version = "^4.2.1"}
+tqdm = "^4.62.3"
+typer = {extras = ["all"], version = "^0.4.0"}
+
+
+[tool.poetry.group.dev.dependencies]
+black = "^21.9-beta.0"
+flake8 = "^4.0.1"
+isort = "^5.9.3"
+mypy = "^0.910"
+pydocstyle = "^6.1.1"
+pytest = "^6.2.5"
+pytest-cov = "^3.0.0"
+taskipy = "^1.9.0"
+types-tabulate = "^0.8.3"
+
+
+[tool.taskipy.tasks]
+test = "pytest -x -s"
+cover = "pytest --cov-config=setup.cfg --cov-report term-missing --cov-report xml --cov --cov-branch"
+fix = "isort mesi tests && black mesi tests"
+lint_format = "black --check mesi tests && isort mesi tests --check"
+lint_practices = "flake8 mesi tests"
+lint_types = "mypy mesi tests"
+lint_docs = "pydocstyle mesi tests"
+lint = "task lint_format && task lint_practices && task lint_types && task lint_docs"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
