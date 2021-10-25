@@ -16,8 +16,8 @@ other.
 
 ## Installation
 
-Python 3.9+ and [pipx](https://pypa.github.io/pipx/) is recommended, although
-[pip](https://pip.pypa.io/en/stable/) will also work.
+Python 3.9+ and [pipx](https://pypa.github.io/pipx/) are recommended, although
+Python 3.6+ and/or [pip](https://pip.pypa.io/en/stable/) will also work.
 
 ```bash
 pipx install mesi
