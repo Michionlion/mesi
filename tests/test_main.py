@@ -6,6 +6,7 @@ from pathlib import Path
 from typing import Callable, List, Tuple
 
 import pytest
+from helpers import pathutil
 from typer.testing import CliRunner
 
 from mesi import main
@@ -60,7 +61,7 @@ def setup_env(tmp_path: Path) -> TmpFileSetup:
                 (Path("test-2/jqsn.txt"), "this is a test"),
             ],
             ["test-1/json.txt", "test-2/jqsn.txt"],
-            "| test-1/json.txt | test-2/jqsn.txt |          0 |",
+            f"| {pathutil.normpath('test-1/json.txt')} | {pathutil.normpath('test-2/jqsn.txt')} |          0 |",
         ),
     ],
 )
