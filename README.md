@@ -68,13 +68,15 @@ implements all the
 [TextDistance](https://github.com/life4/textdistance). In general `levenshtein`
 is never a bad choice, which is why it is the default.
 
-## Bugs/Requests
+### Table Formats
 
-Please use the [GitHub issue
-tracker](https://github.com/Michionlion/mesi/issues) to submit bugs or request
-new features, options, or algorithms.
+Mesi uses [tabulate](https://github.com/astanin/python-tabulate) for table
+formatting. The table format can be configured with the `--table-format` option
+to one of the formats
+[listed](https://github.com/astanin/python-tabulate#table-format) in tabulate's
+documentation.
 
-## Dependencies
+### Dependencies
 
 Mesi uses two primary dependencies for text similarity calculation:
 [polyleven](https://github.com/fujimotos/polyleven), and
@@ -83,6 +85,12 @@ as its singular implementation of [Levenshtein
 distance](https://en.wikipedia.org/wiki/Levenshtein_distance) can be faster in
 most situations. However, if a different edit distance algorithm is requested,
 TextDistance's implementations will be used.
+
+## Bugs/Requests
+
+Please use the [GitHub issue
+tracker](https://github.com/Michionlion/mesi/issues) to submit bugs or request
+new features, options, or algorithms.
 
 ## License
 
