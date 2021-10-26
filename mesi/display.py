@@ -65,8 +65,16 @@ def get_distinct_file_names(pair: Tuple[Path, Path]) -> Tuple[str, str]:
     last_prefix_sep = prefix.rfind(os.path.sep)
     first_suffix_sep = suffix.find(os.path.sep)
     return (
-        first[last_prefix_sep + 1 : -(len(suffix) - first_suffix_sep)],
-        second[last_prefix_sep + 1 : -(len(suffix) - first_suffix_sep)],
+        first[
+            last_prefix_sep + 1 : -(len(suffix) - first_suffix_sep)
+            if first_suffix_sep >= 0
+            else len(first)
+        ],
+        second[
+            last_prefix_sep + 1 : -(len(suffix) - first_suffix_sep)
+            if first_suffix_sep >= 0
+            else len(second)
+        ],
     )
 
 
