@@ -1,10 +1,10 @@
 """Display or parse data objects to strs."""
 
 import os
-from importlib import metadata
 from pathlib import Path
 from typing import Dict, Iterable, List, Tuple, TypeVar, Union
 
+import importlib_metadata
 from tabulate import TableFormat, tabulate
 from tqdm import tqdm
 from typer import colors, format_filename, secho, style, unstyle
@@ -134,7 +134,7 @@ def print_distances(
 def print_version():
     """Print version."""
     secho(
-        f"{style('mesi', bold=True)} (version {style(metadata.version('mesi'), colors.CYAN)})"
+        f"{style('mesi', bold=True)} (version {style(importlib_metadata.version('mesi'), colors.CYAN)})"
     )
 
 

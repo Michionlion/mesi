@@ -574,7 +574,7 @@ testing = ["pytest (>=4.6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytes
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.6.2, <4.0"
-content-hash = "26912e23cd36c096e540def4dbcad68247ffe28709eb9a95f4f83f24504e40e5"
+content-hash = "75fa6bc082dd5b174eb73d47b277e7af5b16f53ea53292e00302099259ed12fe"
 
 [metadata.files]
 abydos = [
