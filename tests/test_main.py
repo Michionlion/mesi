@@ -54,6 +54,14 @@ def setup_env(tmp_path: Path) -> TmpFileSetup:
             ["test-1/hello.txt", "test-2/hello.txt"],
             "| test-1          | test-2          |          5 |",
         ),
+        (
+            [
+                (Path("test-1/json.txt"), "this is a test"),
+                (Path("test-2/jqsn.txt"), "this is a test"),
+            ],
+            ["test-1/json.txt", "test-2/jqsn.txt"],
+            "| test-1/json.txt | test-2/jqsn.txt |          0 |",
+        ),
     ],
 )
 def test_main(
@@ -65,5 +73,6 @@ def test_main(
     """Check that main.mesi_cli does not raise with valid input."""
     with setup_env(files):
         result = runner.invoke(main.mesi_cli, input)
+        print(result.output)
         assert expected in result.output
         assert result.exit_code == 0
