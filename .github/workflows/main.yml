@@ -31,7 +31,7 @@ jobs:
   test:
     # Test uses a strategy matrix to ensure that sufficient platform test
     # coverage is reached. For this configuration, we run the latest Ubuntu
-    # image with Python 3.6, 3.9 and 3.10, while also including MacOS + Python
+    # image with Python 3.6, and 3.9, while also including MacOS + Python
     # 3.8 and Windows + Python 3.7. With this spread, we achieve testing of four
     # different Python versions and three operating systems without running the
     # full twelve possible combinations, greatly reducing load and usage.
@@ -44,7 +44,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest]
-        python-version: ['3.6', '3.9', '3.10']
+        python-version: ['3.6', '3.9']
         include:
           - os: macos-latest
             python-version: '3.8'
