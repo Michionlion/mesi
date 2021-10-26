@@ -1,13 +1,14 @@
 """Test the display module."""
 
-from os import PathLike
 from pathlib import Path
-from typing import List, Tuple
+from typing import Tuple
+
 import pytest
+
 from mesi import display
 
 
-def path_tuple(one: PathLike, two: PathLike):
+def path_tuple(one: str, two: str):
     return (Path(one), Path(two))
 
 
