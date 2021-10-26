@@ -17,10 +17,10 @@ def get_file_name(file: Path) -> str:
     """Get a full file path.
 
     Args:
-        file (Path): A Path to get the representation from
+        file (Path): A Path to get the representation from.
 
     Returns:
-        str: The full file path
+        str: The full file path.
     """
     return format_filename(file)
 
@@ -29,10 +29,10 @@ def get_file_names(files: Iterable[Path]) -> List[str]:
     """Get a list of full file paths.
 
     Args:
-        files (Iterable[Path]): A list of Paths to get the representations from
+        files (Iterable[Path]): A list of Paths to get the representations from.
 
     Returns:
-        List[str]: The list of full file paths
+        List[str]: The list of full file paths.
     """
     return [get_file_name(file) for file in files]
 
@@ -41,10 +41,10 @@ def get_file_list_str(files: Iterable[Path]) -> str:
     """Get a representation of a list of Paths.
 
     Args:
-        files (Iterable[Path]): A list of Paths to represent
+        files (Iterable[Path]): A list of Paths to represent.
 
     Returns:
-        str: The calculated representation
+        str: The calculated representation.
     """
     return f"'{SPACER.join(get_file_names(files))}'"
 
@@ -53,10 +53,10 @@ def get_distinct_file_names(pair: Tuple[Path, Path]) -> Tuple[str, str]:
     """Strip any common suffix and prefix.
 
     Args:
-        pair (Tuple[Path, Path]): A tuple of two paths to strip
+        pair (Tuple[Path, Path]): A tuple of two paths to strip.
 
     Returns:
-        Tuple[str, str]: A tuple of two full file paths with common files or folders removed
+        Tuple[str, str]: A tuple of two full file paths with common files or folders removed.
     """
     first = get_file_name(pair[0])
     second = get_file_name(pair[1])
@@ -82,7 +82,7 @@ def comparison_progressbar(lst: List, **kwargs):
     """Show a progress bar for comparisons, yielding each item.
 
     Args:
-        lst (List): A list of items to process
+        lst (List): A list of items to process.
     """
     return tqdm(lst, total=len(lst), unit="cmp", colour="blue", leave=False, **kwargs)
 
@@ -96,10 +96,10 @@ def print_distances(
     """Print comparisons and the associated distances in a table.
 
     Args:
-        distances (Dict[Tuple[Path, Path], float]): A dictionary of comparisons to distances
-        distance_threshold (float): The threshold below which to display values
+        distances (Dict[Tuple[Path, Path], float]): A dictionary of comparisons to distances.
+        distance_threshold (float): The threshold below which to display values.
         tablefmt (Union[TableFormat, str], optional): The format of the table to print. Defaults to "pipe".
-        full_file_names (bool, optional): Whether to use the full file name or only the differing paths
+        full_file_names (bool, optional): Whether to use the full file name or only the differing paths.
     """
     file_name_function = get_file_names if full_paths else get_distinct_file_names
     path_header = "Path" if full_paths else "Distinct Path"
@@ -139,7 +139,7 @@ def print_error(err: Union[Exception, str]):
     """Print a styled error.
 
     Args:
-        err (Union[Exception, str]): An error (either an Exception or just a description)
+        err (Union[Exception, str]): An error (either an Exception or just a description).
     """
     secho(
         f"Error: {style(str(err), fg=colors.RED, bold=False, italic=True)}",
@@ -152,7 +152,7 @@ def print_error_invalid_given(invalid: Iterable[Path]):
     """Print an error for if an invalid Path was provided by the user.
 
     Args:
-        invalid (Iterable[Path]): A list of the invalid Paths provided
+        invalid (Iterable[Path]): A list of the invalid Paths provided.
     """
     print_error(
         f"Invalid files {get_file_list_str(invalid)} given (could be directories, or not exist); use --ignore-invalid to ignore!",
@@ -163,7 +163,7 @@ def print_error_not_enough_valid(real_files: Iterable[Path]):
     """Print an error for if not enough valid Paths were provided by the user.
 
     Args:
-        real_files (Iterable[Path]): A list of the Paths provided
+        real_files (Iterable[Path]): A list of the Paths provided.
     """
     print_error(
         f"Given file list {get_file_list_str(real_files)} does not contain enough valid files to compare!",
@@ -174,7 +174,7 @@ def print_error_not_comparable(files: Iterable[Path]):
     """Print an error for if not enough Paths were provided by the user.
 
     Args:
-        files (Iterable[Path]): A list of the valid Paths provided
+        files (Iterable[Path]): A list of the valid Paths provided.
     """
     print_error(
         f"Given file list {get_file_list_str(files)} is not comparable!",

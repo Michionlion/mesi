@@ -57,6 +57,7 @@ def get_contents(
 
     Args:
         pair (Tuple[Path, Path]): The pair of Paths to get the contents from.
+        remove_whitespace (bool): Whether to remove whitespace from contents.
 
     Returns:
         Tuple[str, str]: The contents of the given Paths
@@ -75,8 +76,8 @@ def calculate_distances(
     """Calculate distances.
 
     Args:
-        combinations (Iterable[Tuple[Path, Path]]): The combinations to calculate distance for
-        algorithm (str): The algorithm to use to calculate distance
+        combinations (Iterable[Tuple[Path, Path]]): The combinations to calculate distance for.
+        algorithm (str): The algorithm to use to calculate distance.
 
     Raises:
         ValueError: If the algorithm given is not a valid distance algorithm
