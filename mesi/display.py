@@ -106,13 +106,8 @@ def print_distances(
     path_header = "Path" if full_paths else "Distinct Path"
     rows = [
         (
-            # style(
-            #     f"{' <-> '.join(file_names)}",
-            #     fg=colors.BRIGHT_WHITE,
-            # ),
-            style(file_name_function(pair)[0], fg=colors.BRIGHT_WHITE),
-            style(file_name_function(pair)[1], fg=colors.BRIGHT_WHITE),
-            style(distances[pair], fg=colors.BRIGHT_WHITE, bold=True),
+            *file_name_function(pair),
+            style(distances[pair], bold=True),
         )
         for pair in distances
     ]
