@@ -17,6 +17,9 @@ def main(
     threshold: float = typer.Option(
         inf, help="Distances below this threshold will be shown", metavar="number"
     ),
+    table_format: str = typer.Option(
+        "pipe", help="Format to use for results table displayed with tabulate"
+    ),
     ignore_whitespace: bool = typer.Option(
         False, help="Ignore whitespace in compared files"
     ),
@@ -49,7 +52,7 @@ def main(
         distances = compare.calculate_distances(
             combinations, algorithm, ignore_whitespace
         )
-        display.print_distances(distances, threshold, full_paths=full_paths)
+        display.print_distances(distances, threshold, table_format, full_paths)
     except ValueError as err:
         display.print_error(err)
         raise typer.Exit(1)
