@@ -1,6 +1,7 @@
 """Display or parse data objects to strs."""
 
 import os
+from importlib import metadata
 from pathlib import Path
 from typing import Dict, Iterable, List, Tuple, TypeVar, Union
 
@@ -133,6 +134,13 @@ def print_distances(
         colalign=("left", "left", "decimal"),
     )
     secho(table)
+
+
+def print_version():
+    """Print version."""
+    secho(
+        f"{style('mesi', bold=True)} (version {style(metadata.version('mesi'), colors.CYAN)})"
+    )
 
 
 def print_error(err: Union[Exception, str]):

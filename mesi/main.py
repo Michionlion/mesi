@@ -2,7 +2,7 @@
 
 from math import inf
 from pathlib import Path
-from typing import List
+from typing import List, Optional
 
 import typer
 
@@ -11,9 +11,23 @@ from mesi import compare, display, prepare, verify
 mesi_cli = typer.Typer(add_completion=False)
 
 
+def version_callback(execute: bool):
+    """Display version and exit if execute is True."""
+    if execute:
+        display.print_version()
+        raise typer.Exit()
+
+
 @mesi_cli.command()
 def main(
     files: List[Path] = typer.Argument(..., help="Files to compare"),
+    version: Optional[bool] = typer.Option(
+        None,
+        "--version",
+        help="Show version and exit",
+        callback=version_callback,
+        is_eager=True,
+    ),
     threshold: float = typer.Option(
         inf, help="Distances below this threshold will be shown", metavar="number"
     ),
