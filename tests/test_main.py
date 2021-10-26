@@ -74,6 +74,5 @@ def test_main(
     """Check that main.mesi_cli does not raise with valid input."""
     with setup_env(files):
         result = runner.invoke(main.mesi_cli, input)
-        print(result.output)
         assert expected in result.output
         assert result.exit_code == 0

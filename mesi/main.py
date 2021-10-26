@@ -29,10 +29,12 @@ def main(
         is_eager=True,
     ),
     threshold: float = typer.Option(
-        inf, help="Distances below this threshold will be shown", metavar="number"
+        inf, help="Distances below this threshold will be shown", metavar="NUMBER"
     ),
     table_format: str = typer.Option(
-        "pipe", help="Format to use for results table displayed with tabulate"
+        "pipe",
+        help="Format to use for results table displayed with tabulate",
+        metavar="FORMAT",
     ),
     ignore_whitespace: bool = typer.Option(
         False, help="Ignore whitespace in compared files"
@@ -46,9 +48,14 @@ def main(
     algorithm: str = typer.Option(
         "levenshtein",
         help=f"String distance algorithm to use  [{', '.join(compare.DISTANCE_FUNCTIONS.keys())}]",
+        metavar="ALGORITHM",
     ),
 ):
-    """Calculate the similarity between all possible pairs among the given files."""
+    """Calculate the similarity between all possible pairs among the given files.
+
+    For examples and more details on algorithms, table formats, and other options
+    visit: https://pypi.org/project/mesi.
+    """
     comparable_files, invalid = verify.filter_non_files(files)
     if invalid and not ignore_invalid:
         display.print_error_invalid_given(invalid)
