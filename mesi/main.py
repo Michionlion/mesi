@@ -50,6 +50,12 @@ def main(
         help=f"String distance algorithm to use  [{', '.join(compare.DISTANCE_FUNCTIONS.keys())}]",
         metavar="ALGORITHM",
     ),
+    average: bool = typer.Option(
+        False, help="Display the average of the computed distances"
+    ),
+    distribution: bool = typer.Option(
+        False, help="Display the distribution of the computed distances"
+    ),
 ):
     """Calculate the similarity between all possible pairs among the given files.
 
@@ -74,6 +80,15 @@ def main(
             combinations, algorithm, ignore_whitespace
         )
         display.print_distances(distances, threshold, table_format, full_paths)
+
+        if average or distribution:
+            display.print_divider("Statistics")
+
+        if average:
+            display.print_average_distance(distances, threshold)
+
+        if distribution:
+            display.print_distance_distribution(distances, threshold)
     except ValueError as err:
         display.print_error(err)
         raise typer.Exit(1)

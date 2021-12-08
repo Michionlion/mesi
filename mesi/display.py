@@ -88,6 +88,39 @@ def comparison_progressbar(lst: List, **kwargs):
     return tqdm(lst, total=len(lst), unit="cmp", colour="blue", leave=False, **kwargs)
 
 
+def print_divider(title=""):
+    """Print a simple divider with an optional title."""
+    title = f" {title} " if title else ""
+    print(f"\n======{title}======\n")
+
+
+def print_average_distance(
+    distances: Dict[Tuple[Path, Path], float], distance_threshold: float
+):
+    """Print the average of the distances.
+
+    Args:
+        distances (Dict[Tuple[Path, Path], float]): A dictionary of comparisons to distances.
+        distance_threshold (float): The threshold below which to count values.
+    """
+    values = list(filter(lambda x: x <= distance_threshold, distances.values()))
+    avg = round(sum(values) / len(values), 2)
+
+    print(f"> Average distance: {avg}")
+
+
+def print_distance_distribution(
+    distances: Dict[Tuple[Path, Path], float], distance_threshold: float
+):
+    """Print the distribution of the distances.
+
+    Args:
+        distances (Dict[Tuple[Path, Path], float]): A dictionary of comparisons to distances.
+        distance_threshold (float): The threshold below which to count values.
+    """
+    print("> Distribution display is not yet supported")
+
+
 def print_distances(
     distances: Dict[Tuple[Path, Path], float],
     distance_threshold: float,
